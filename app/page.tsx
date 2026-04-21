@@ -285,7 +285,7 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      const storedState = sessionStorage.getItem("valentineState")
+      const storedState = sessionStorage.getItem("birthdayState")
 
       if (storedState) {
         const parsed = JSON.parse(storedState) as any
@@ -293,7 +293,7 @@ export default function Home() {
         if (typeof parsed.isUnlocked === "boolean") {
           setIsUnlocked(parsed.isUnlocked)
         } else {
-          const stored = sessionStorage.getItem("valentineUnlocked")
+          const stored = sessionStorage.getItem("birthdayUnlocked")
           if (stored === "1") {
             setIsUnlocked(true)
           }
@@ -313,7 +313,7 @@ export default function Home() {
           setSelectedImage(migratedImage)
         }
       } else {
-        const stored = sessionStorage.getItem("valentineUnlocked")
+        const stored = sessionStorage.getItem("birthdayUnlocked")
         if (stored === "1") {
           setIsUnlocked(true)
         }
@@ -332,13 +332,13 @@ export default function Home() {
         showGift,
         selectedImage,
       }
-      sessionStorage.setItem("valentineState", JSON.stringify(state))
+      sessionStorage.setItem("birthdayState", JSON.stringify(state))
     } catch {}
   }, [isUnlocked, showGift, selectedImage])
 
   useEffect(() => {
     try {
-      const stored = sessionStorage.getItem("valentineUnlocked")
+      const stored = sessionStorage.getItem("birthdayUnlocked")
       if (stored === "1") {
         setIsUnlocked(true)
       }
@@ -358,7 +358,7 @@ export default function Home() {
       if (enteredCode === "2715") {
         setIsUnlocked(true)
         try {
-          sessionStorage.setItem("valentineUnlocked", "1")
+          sessionStorage.setItem("birthdayUnlocked", "1")
         } catch {}
       }
 
@@ -456,8 +456,8 @@ export default function Home() {
               setDigits(Array(4).fill("0"))
               setNoPosition({ top: 65, left: 50 })
               try {
-                sessionStorage.removeItem("valentineUnlocked")
-                sessionStorage.removeItem("valentineState")
+                sessionStorage.removeItem("birthdayUnlocked")
+                sessionStorage.removeItem("birthdayState")
               } catch {}
             }}
             className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/90 text-[#9b1412] text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase shadow-lg backdrop-blur hover:bg-white hover:shadow-xl transition-all duration-200 z-30"

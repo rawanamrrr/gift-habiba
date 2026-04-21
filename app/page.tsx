@@ -152,7 +152,7 @@ function ScratchCard({ brushRadius = 30, onClick }: ScratchCardProps) {
 }
 
 export default function Home() {
-  const [digits, setDigits] = useState<string[]>(Array(7).fill("0"))
+  const [digits, setDigits] = useState<string[]>(Array(4).fill("0"))
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [showGift, setShowGift] = useState(false)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -214,7 +214,7 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    const targetTime = new Date(2026, 1, 14, 18, 0, 0).getTime()
+    const targetTime = new Date(2026, 3, 22, 18, 0, 0).getTime()
 
     const updateCountdown = () => {
       const now = Date.now()
@@ -268,8 +268,6 @@ export default function Home() {
       "/images3.jpg",
       "/images4.jpg",
       "/images5.jpg",
-      "/images6.jpg",
-      "/images7.jpg",
     ]
 
     imageSources.forEach((src) => {
@@ -357,7 +355,7 @@ export default function Home() {
         direction === "up" ? (current + 1) % 10 : (current + 9) % 10
       next[index] = String(newDigit)
       const enteredCode = next.join("")
-      if (enteredCode === "1392025") {
+      if (enteredCode === "2715") {
         setIsUnlocked(true)
         try {
           sessionStorage.setItem("valentineUnlocked", "1")
@@ -446,7 +444,6 @@ export default function Home() {
               className="absolute inset-0 w-full h-full object-cover pointer-events-none"
               autoPlay
               muted
-              loop
               playsInline
               controls={false}
             />
@@ -456,7 +453,7 @@ export default function Home() {
             onClick={() => {
               setIsUnlocked(false)
               setShowGift(false)
-              setDigits(Array(7).fill("0"))
+              setDigits(Array(4).fill("0"))
               setNoPosition({ top: 65, left: 50 })
               try {
                 sessionStorage.removeItem("valentineUnlocked")
@@ -614,7 +611,7 @@ export default function Home() {
                   ref={imagesScrollRef}
                   className="relative w-full h-full overflow-y-auto"
                 >
-                  {Array.from({ length: 7 }, (_, index) => (
+                  {Array.from({ length: 5 }, (_, index) => (
                     <img
                       key={index}
                       src={`/images${index + 1}.jpg`}
